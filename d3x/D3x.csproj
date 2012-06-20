@@ -52,6 +52,19 @@
     <Compile Include="Offsets.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Pad.cs" />
+    <Compile Include="Structures\Actor.cs" />
+    <Compile Include="Structures\ActorMovement.cs" />
+    <Compile Include="Structures\AttributeGroupsContainer.cs" />
+    <Compile Include="Structures\Container.cs" />
+    <Compile Include="Structures\ObjectData.cs" />
+    <Compile Include="Structures\ObjectDataContainer.cs" />
+    <Compile Include="Structures\ObjectManager.cs" />
+    <Compile Include="Structures\ObjectManagerStorage.cs" />
+    <Compile Include="Structures\Pad.cs" />
+    <Compile Include="Structures\Wtf.cs" />
+    <Compile Include="Structures\Vec2.cs" />
+    <Compile Include="Structures\Vec3.cs" />
+    <Compile Include="Structures\Vec4.cs" />
     <Compile Include="tContainer.cs" />
   </ItemGroup>
   <ItemGroup>
