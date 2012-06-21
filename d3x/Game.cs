@@ -24,8 +24,7 @@ namespace D3x
                 MemoryNew = new ProcessMemoryReader(Process.GetProcessById(procId));
                 ObjectManagerNew = (Structures.ObjectManager)MemoryNew.Read((IntPtr)addrObjectManager, typeof(Structures.ObjectManager));
 
-                //Structures.Actor actor = (Structures.Actor)Reader.Read((IntPtr)(addrObjectManager + 0x919690), typeof(Structures.Actor));
-
+                Structures.Actor actor = (Structures.Actor)MemoryNew.Read((IntPtr)(addrObjectManager + 0x919690), typeof(Structures.Actor));
             }
             catch (Exception ex)
             {

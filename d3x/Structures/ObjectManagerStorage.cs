@@ -1,43 +1,79 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Runtime.InteropServices;
 
 namespace D3x.Structures
 {
-   unsafe public struct ObjectManagerStorage
+    [StructLayout(LayoutKind.Sequential)]
+    unsafe public struct ObjectManagerStorage
     {
-        public fixed byte unknown_0[16]; // 0x000 
-        public float fl_120; // 0x010 
+        //[FieldOffset(0x000)]
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 16)]
+        public byte[] unknown_0; // 0x000 
+        /*public float fl_120; // 0x010 
         public float fl_1; // 0x014 
-        public fixed byte unknown_18[144]; // 0x018 
-        //public ObjectDataContainer* Data; // 0x0A8 
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 144)]
+        public byte[] unknown_18; // 0x018 
+        //[MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(TestMarshaler))]
+        //public UInt32 Data;
         public IntPtr pData; // 0x0A8 
-        public fixed byte unknown_AC[28]; // 0x0AC 
-        public AttributeGroupsContainer* AttribGroups; // 0x0C8 
-        public fixed byte unknown_CC[8]; // 0x0CC 
+        //public Structures.ObjectDataContainer* DataContainer; // 0x0A8 
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 28)]
+        public byte[] unknown_AC; // 0x0AC 
+        public IntPtr pAttribGroups; // 0x0A8 
+        //public AttributeGroupsContainer* AttribGroups; // 0x0C8 
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
+        public byte[] unknown_CC; // 0x0CC 
+        //public IntPtr* ACD; // 0x0A8 
         //public Container<ActorCommonData>** ACD; // 0x0D4 
         public IntPtr pACD; // 0x0A8 
-        public fixed byte unknown_D8[64]; // 0x0D8 
-        public uint Mode; // 0x118 
-        public fixed byte unknown_11C[12]; // 0x11C 
-        public uint Lights; // 0x128 
-        public uint Cutscenes; // 0x12C 
-        public fixed byte unknown_130[4]; // 0x130 
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]
+        public byte[] unknown_D8; // 0x0D8 
+        public ulong Mode; // 0x118 
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 12)]
+        public byte[] unknown_11C; // 0x11C 
+        public ulong Lights; // 0x128 
+        public ulong Cutscenes; // 0x12C 
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
+        public byte[] unknown_130; // 0x130 
+        public IntPtr pActorsContainer; // 0x0A8 
         //tContainer<CActor>* Actors; // 0x134 
-        public fixed byte unknown_138[4]; // 0x138 
-        public uint ppCloth; // 0x13C 
-        public uint ppExplosion; // 0x140 
-        public fixed byte unknown_144[36]; // 0x144 
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
+        public byte[] unknown_138; // 0x138 
+        public ulong ppCloth; // 0x13C 
+        public ulong ppExplosion; // 0x140 
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 36)]
+        public byte[] unknown_144; // 0x144 
+        public IntPtr Frames; // 0x0A8 
         //ObManFrames* Frames; // 0x168 
-        public fixed byte unknown_16C[12]; // 0x16C 
-        public uint Scenes; // 0x178 
-        public fixed byte unknown_17C[8]; // 0x17C 
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 12)]
+        public byte[] unknown_16C; // 0x16C 
+        public ulong Scenes; // 0x178 
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
+        public byte[] unknown_17C; // 0x17C 
+        public IntPtr MovHistory; // 0x0A8 
         //CObMovHPtr* MovHistory; // 0x184 
-        public fixed byte unknown_188[40]; // 0x188 
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 40)]
+        public byte[] unknown_188; // 0x188 
+        public IntPtr Worlds; // 0x0A8 
         //tContainer<CWorld>* Worlds; // 0x1B0 
-        public fixed byte unknown_1B4[4]; // 0x1B4 
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
+        public byte[] unknown_1B4; // 0x1B4 
+        public IntPtr Local; // 0x0A8 
         //CObLocal* Local; // 0x1B8 
-        public fixed byte unknown_1BC[656]; // 0x1BC 
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 656)]
+        public byte[] unknown_1BC; // 0x1BC 
 
+        public Structures.ObjectDataContainer GetData()
+        {
+            return (Structures.ObjectDataContainer)Game.MemoryNew.Read((IntPtr)(pData), typeof(Structures.ObjectDataContainer));
+        }
+
+        public Structures.ContainerActor GetActors()
+        {
+            return (Structures.ContainerActor)Game.MemoryNew.Read((IntPtr)(pData), typeof(Structures.ContainerActor));
+        }
+        */
     }
 }

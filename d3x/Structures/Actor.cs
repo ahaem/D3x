@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace D3x.Structures
 {
-    [StructLayout(LayoutKind.Sequential, Pack = 4, CharSet = CharSet.Ansi, Size = 0x428)]
+    [StructLayout(LayoutKind.Sequential, /*Pack = 4, */ CharSet = CharSet.Ansi, Size = 0x428)]
     unsafe public struct Actor
     {
         public uint id_actor; // 0x000 

@@ -7,10 +7,10 @@ namespace D3x
 {
     public class Actor : Base
     {
-        private UInt32 addressBase;
+        public UInt32 addressBase;
         private UInt32 offsetId_actor = 0x000;
         private UInt32 offsetId_acd = 0x004;
-        private UInt32 offsetName = 0x008; //[128]
+        public UInt32 offsetName = 0x008; //[128]
         private UInt32 offsetId_sno = 0x088;
         private UInt32 offsetGuid_world = 0x0D8;
         private UInt32 offsetGuid_unk = 0x0DC;

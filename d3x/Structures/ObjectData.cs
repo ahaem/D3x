@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Runtime.InteropServices;
 
 namespace D3x.Structures
 {
-   unsafe public struct ObjectData
+    unsafe public struct ObjectData
     {
-        public fixed byte unknown_0[4]; // 0x000 
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
+        public byte[] unknown_0; // 0x000 
         public ulong id_anim; // 0x004 
         public ulong id_actor; // 0x008 
-        public fixed byte unknown_C[308];     // 0x00C 
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 308)]
+        public byte[] unknown_C; // 0x00C 
     }
 }
