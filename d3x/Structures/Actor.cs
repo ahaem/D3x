@@ -1,17 +1,17 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Runtime.InteropServices;
 
 namespace D3x.Structures
 {
-    [StructLayout(LayoutKind.Sequential, /*Pack = 4, */ CharSet = CharSet.Ansi, Size = 0x428)]
+    [StructLayout(LayoutKind.Sequential )]
     unsafe public struct Actor
     {
-        public uint id_actor; // 0x000 
-        public uint id_acd; // 0x004 
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 128)]
-        public char[] name; // 0x008 
+        public UInt32 id_actor; // 0x000 
+        public UInt32 id_acd; // 0x004 
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 128)]
+        public string name; // 0x008 
         public uint id_sno; // 0x088 
         public fixed byte unknown_8C[4]; // 0x08C 
         public Vec3 Rot; // 0x090 
@@ -49,13 +49,5 @@ namespace D3x.Structures
         public uint Frame; // 0x418 
         public uint Diff; // 0x41C 
         public fixed byte unknown_420[8]; // 0x420 
-
-        public string Name
-        {
-            get
-            {
-                return new string(name).TrimEnd(new char[] { (char)0 });
-            }
-        }
     }
 }

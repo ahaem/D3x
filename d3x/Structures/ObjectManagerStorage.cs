@@ -11,7 +11,7 @@ namespace D3x.Structures
         //[FieldOffset(0x000)]
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 16)]
         public byte[] unknown_0; // 0x000 
-        /*public float fl_120; // 0x010 
+        public float fl_120; // 0x010 
         public float fl_1; // 0x014 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 144)]
         public byte[] unknown_18; // 0x018 
@@ -22,34 +22,34 @@ namespace D3x.Structures
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 28)]
         public byte[] unknown_AC; // 0x0AC 
         public IntPtr pAttribGroups; // 0x0A8 
-        //public AttributeGroupsContainer* AttribGroups; // 0x0C8 
+        //public Structures.AttributeGroupsContainer AttribGroups; // 0x0C8 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
         public byte[] unknown_CC; // 0x0CC 
-        //public IntPtr* ACD; // 0x0A8 
+        public IntPtr ACD; // 0x0A8 
         //public Container<ActorCommonData>** ACD; // 0x0D4 
-        public IntPtr pACD; // 0x0A8 
+        //public IntPtr pACD; // 0x0A8 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]
         public byte[] unknown_D8; // 0x0D8 
-        public ulong Mode; // 0x118 
+        public UInt32 Mode; // 0x118 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 12)]
         public byte[] unknown_11C; // 0x11C 
-        public ulong Lights; // 0x128 
-        public ulong Cutscenes; // 0x12C 
+        public UInt32 Lights; // 0x128 
+        public UInt32 Cutscenes; // 0x12C 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
         public byte[] unknown_130; // 0x130 
         public IntPtr pActorsContainer; // 0x0A8 
         //tContainer<CActor>* Actors; // 0x134 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
         public byte[] unknown_138; // 0x138 
-        public ulong ppCloth; // 0x13C 
-        public ulong ppExplosion; // 0x140 
+        public UInt32 ppCloth; // 0x13C 
+        public UInt32 ppExplosion; // 0x140 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 36)]
         public byte[] unknown_144; // 0x144 
         public IntPtr Frames; // 0x0A8 
         //ObManFrames* Frames; // 0x168 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 12)]
         public byte[] unknown_16C; // 0x16C 
-        public ulong Scenes; // 0x178 
+        public UInt32 Scenes; // 0x178 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
         public byte[] unknown_17C; // 0x17C 
         public IntPtr MovHistory; // 0x0A8 
@@ -70,10 +70,12 @@ namespace D3x.Structures
             return (Structures.ObjectDataContainer)Game.MemoryNew.Read((IntPtr)(pData), typeof(Structures.ObjectDataContainer));
         }
 
-        public Structures.ContainerActor GetActors()
+        public Structures.ContainerActor GetActorContainer()
         {
-            return (Structures.ContainerActor)Game.MemoryNew.Read((IntPtr)(pData), typeof(Structures.ContainerActor));
+            //return (Structures.ContainerActor)Game.MemoryNew.Read((IntPtr)(84342464), typeof(Structures.ContainerActor));
+            return (Structures.ContainerActor)Game.MemoryNew.Read(pActorsContainer, typeof(Structures.ContainerActor));
+            //return (Structures.Container<Structures.Actor>)Game.MemoryNew.Read(pActorsContainer, typeof(Structures.Container<Structures.Actor>));
         }
-        */
+
     }
 }
