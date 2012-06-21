@@ -5,10 +5,16 @@ using System.Runtime.InteropServices;
 
 namespace D3x.Structures
 {
-    unsafe public struct Pad
+    [StructLayout(LayoutKind.Explicit)]
+    public struct Pad
     {
-        public fixed byte unknown_0[56]; // 0x000 
-        public uint FrameCurrent; // 0x038
-        public fixed byte unknown_3C[1856]; // 0x03C
+        [FieldOffset(0x000)]
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 56)]
+        public byte[] unknown_0; // 0x000 
+        [FieldOffset(0x038)]
+        public UInt32 FrameCurrent; // 0x038
+        [FieldOffset(0x03C)]
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1856)]
+        public byte[] unknown_3C; // 0x03C
     };
 }

@@ -28,6 +28,8 @@ namespace Sample
                 {
                     lstActors.Items.Add(actor.Name);
                 }
+                Debug.Print("OLD: " + Game.ObjectManager.Data.frame.ToString());
+                Debug.Print("NEW: " + Game.ObjectManagerNew.Data.FrameCurrent.ToString());
             }
             catch (Exception ex)
             {

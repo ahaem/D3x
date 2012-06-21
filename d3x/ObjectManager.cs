@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Runtime.InteropServices;
 
 namespace D3x
 {
@@ -16,11 +17,11 @@ namespace D3x
             addressBase = _baseAddress;
         }
 
-        public Structures.tPad Data
+        public Pad Data
         {
             get
             {
-                return new Structures.tPad(); //dummy
+                return new Pad(addressBase + offsetData);
             }
         }
 

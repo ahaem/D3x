@@ -10,11 +10,13 @@ namespace D3x.Structures
         public float fl_120; // 0x010 
         public float fl_1; // 0x014 
         public fixed byte unknown_18[144]; // 0x018 
-        public ObjectDataContainer* Data; // 0x0A8 
+        //public ObjectDataContainer* Data; // 0x0A8 
+        public IntPtr pData; // 0x0A8 
         public fixed byte unknown_AC[28]; // 0x0AC 
         public AttributeGroupsContainer* AttribGroups; // 0x0C8 
         public fixed byte unknown_CC[8]; // 0x0CC 
         //public Container<ActorCommonData>** ACD; // 0x0D4 
+        public IntPtr pACD; // 0x0A8 
         public fixed byte unknown_D8[64]; // 0x0D8 
         public uint Mode; // 0x118 
         public fixed byte unknown_11C[12]; // 0x11C 
@@ -36,5 +38,6 @@ namespace D3x.Structures
         public fixed byte unknown_1B4[4]; // 0x1B4 
         //CObLocal* Local; // 0x1B8 
         public fixed byte unknown_1BC[656]; // 0x1BC 
+
     }
 }
