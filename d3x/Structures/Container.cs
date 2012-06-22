@@ -17,7 +17,7 @@ namespace D3x.Structures
         public Int32 Last;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 60)]
         public byte[] unknown_10C;
-        public IntPtr List;
+        public UInt32 List;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]
         public byte[] unknown_14C;
         public UInt32 Bits;
@@ -35,7 +35,7 @@ namespace D3x.Structures
         public Int32 Last;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 60)]
         public byte[] unknown_10C;
-        public IntPtr pList;
+        public UInt32 pList;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]
         public byte[] unknown_14C;
         public UInt32 Bits;
@@ -45,16 +45,16 @@ namespace D3x.Structures
         public List<Structures.Actor> GetList()
         {
             List<Structures.Actor> items = new List<Structures.Actor>();
-            UInt32 offsetCurrentListItem = Game.Memory.ReadUInt((uint)pList); //todo Need to move this to MemoryNew
-            IntPtr pFirstItem = (IntPtr)offsetCurrentListItem;
+            UInt32 offsetCurrentListItem = Game.Memory.ReadUInt((UInt32)pList); //todo Need to move this to MemoryNew
+            UInt32 pFirstItem = (UInt32)offsetCurrentListItem;
 
-            IntPtr pCurrentItem = pFirstItem;
+            UInt32 pCurrentItem = pFirstItem;
             for (int i = 0; i < this.Last; i++)
             {
-                Actor item = (Structures.Actor)Game.MemoryNew.Read(pCurrentItem, typeof(Structures.Actor));
+                Actor item = (Structures.Actor)Game.Memory.ReadObject(pCurrentItem, typeof(Structures.Actor));
                 Debug.Print(item.name + ": " + Enum.GetName(typeof(SNO.Actor), item.id_sno));
                 items.Add(item);
-                pCurrentItem = (IntPtr)((UInt32)pCurrentItem + SizeOf);
+                pCurrentItem = (UInt32)pCurrentItem + SizeOf;
             }
             return items;
         }
@@ -70,7 +70,7 @@ namespace D3x.Structures
         public Int32 Last;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 60)]
         public byte[] unknown_10C;
-        public IntPtr pList;
+        public UInt32 pList;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]
         public byte[] unknown_14C;
         public UInt32 Bits;
@@ -81,15 +81,15 @@ namespace D3x.Structures
         {
             List<Structures.ActorCommonData> items = new List<Structures.ActorCommonData>();
             UInt32 offsetCurrentListItem = Game.Memory.ReadUInt((uint)pList); //todo Need to move this to MemoryNew
-            IntPtr pFirstItem = (IntPtr)offsetCurrentListItem;
+            UInt32 pFirstItem = (UInt32)offsetCurrentListItem;
 
-            IntPtr pCurrentItem = pFirstItem;
+            UInt32 pCurrentItem = pFirstItem;
             for (int i = 0; i < this.Last; i++)
             {
-                ActorCommonData item = (Structures.ActorCommonData)Game.MemoryNew.Read(pCurrentItem, typeof(Structures.ActorCommonData));
+                ActorCommonData item = (Structures.ActorCommonData)Game.Memory.ReadObject(pCurrentItem, typeof(Structures.ActorCommonData));
                 //Debug.Print(item.name + ": " + Enum.GetName(typeof(SNO.Actor), item.id_sno));
                 items.Add(item);
-                pCurrentItem = (IntPtr)((UInt32)pCurrentItem + SizeOf);
+                pCurrentItem = (UInt32)((UInt32)pCurrentItem + SizeOf);
             }
             return items;
         }

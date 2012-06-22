@@ -32,7 +32,7 @@ namespace D3x.Structures
         public byte[] pad228;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
         public int[] serMsgTriggeredEvents;
-        public IntPtr NavZoneDef;
+        public UInt32 NavZoneDef;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
         public int[] dword278;
         public int dword310;
