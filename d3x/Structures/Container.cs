@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Runtime.InteropServices;
+using System.Diagnostics;
 
 namespace D3x.Structures
 {
-    [StructLayout(LayoutKind.Sequential)]
+    // Following is unused, haven't managed to get it to play nice.
+    /*[StructLayout(LayoutKind.Sequential)]
     unsafe public struct Container<T>
     {
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
@@ -21,10 +23,10 @@ namespace D3x.Structures
         public UInt32 Bits;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]
         public byte[] unknown_190;
-    }
+    }*/
 
     [StructLayout(LayoutKind.Sequential)]
-    unsafe public struct ContainerActor
+    public struct ContainerActor
     {
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
         public string name;
@@ -43,15 +45,49 @@ namespace D3x.Structures
         public List<Structures.Actor> GetList()
         {
             List<Structures.Actor> items = new List<Structures.Actor>();
-            //IntPtr pSomething = pList; // This is the first pointer, an iterator maybe?
-            //IntPtr pFirstItem = (IntPtr)Marshal.ReadIntPtr(pSomething);
-            UInt32 offsetCurrentListItem = Game.Memory.ReadUInt((uint) pList); //debug Not sure why two times. Missing something.
+            UInt32 offsetCurrentListItem = Game.Memory.ReadUInt((uint)pList); //todo Need to move this to MemoryNew
             IntPtr pFirstItem = (IntPtr)offsetCurrentListItem;
 
             IntPtr pCurrentItem = pFirstItem;
             for (int i = 0; i < this.Last; i++)
             {
                 Actor item = (Structures.Actor)Game.MemoryNew.Read(pCurrentItem, typeof(Structures.Actor));
+                Debug.Print(item.name + ": " + Enum.GetName(typeof(SNO.Actor), item.id_sno));
+                items.Add(item);
+                pCurrentItem = (IntPtr)((UInt32)pCurrentItem + SizeOf);
+            }
+            return items;
+        }
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct ContainerActorCommonData
+    {
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
+        public string name;
+        public UInt32 Limit;
+        public UInt32 SizeOf;
+        public Int32 Last;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 60)]
+        public byte[] unknown_10C;
+        public IntPtr pList;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]
+        public byte[] unknown_14C;
+        public UInt32 Bits;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]
+        public byte[] unknown_190;
+
+        public List<Structures.ActorCommonData> GetList()
+        {
+            List<Structures.ActorCommonData> items = new List<Structures.ActorCommonData>();
+            UInt32 offsetCurrentListItem = Game.Memory.ReadUInt((uint)pList); //todo Need to move this to MemoryNew
+            IntPtr pFirstItem = (IntPtr)offsetCurrentListItem;
+
+            IntPtr pCurrentItem = pFirstItem;
+            for (int i = 0; i < this.Last; i++)
+            {
+                ActorCommonData item = (Structures.ActorCommonData)Game.MemoryNew.Read(pCurrentItem, typeof(Structures.ActorCommonData));
+                //Debug.Print(item.name + ": " + Enum.GetName(typeof(SNO.Actor), item.id_sno));
                 items.Add(item);
                 pCurrentItem = (IntPtr)((UInt32)pCurrentItem + SizeOf);
             }

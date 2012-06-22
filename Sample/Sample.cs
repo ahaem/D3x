@@ -23,13 +23,11 @@ namespace Sample
             try
             {
                 Game.Attach(SProcess.GetProcessesFromWindowTitle("Diablo III")[0]);
-                Debug.Print("DEBUG: count: " + Game.ObjectManager.Storage.Actors.Count);
-                foreach (Actor actor in Game.ObjectManager.Storage.Actors)
+                Debug.Print("DEBUG: count: " + Game.ObjectManager.Storage.GetActorContainer().GetList().Count);
+                foreach (D3x.Structures.Actor actor in Game.ObjectManager.Storage.GetActorContainer().GetList())
                 {
-                    lstActors.Items.Add(actor.Name);
+                    lstActors.Items.Add(actor.name);
                 }
-                Debug.Print("OLD: " + Game.ObjectManager.Data.frame.ToString());
-                Debug.Print("NEW: " + Game.ObjectManagerNew.Data.FrameCurrent.ToString());
             }
             catch (Exception ex)
             {

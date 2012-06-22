@@ -6,28 +6,21 @@ using System.Runtime.InteropServices;
 namespace D3x.Structures
 {
     [StructLayout(LayoutKind.Sequential)]
-    unsafe public struct ObjectManagerStorage
+    public struct ObjectManagerStorage
     {
-        //[FieldOffset(0x000)]
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 16)]
         public byte[] unknown_0; // 0x000 
         public float fl_120; // 0x010 
         public float fl_1; // 0x014 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 144)]
         public byte[] unknown_18; // 0x018 
-        //[MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(TestMarshaler))]
-        //public UInt32 Data;
         public IntPtr pData; // 0x0A8 
-        //public Structures.ObjectDataContainer* DataContainer; // 0x0A8 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 28)]
         public byte[] unknown_AC; // 0x0AC 
         public IntPtr pAttribGroups; // 0x0A8 
-        //public Structures.AttributeGroupsContainer AttribGroups; // 0x0C8 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
         public byte[] unknown_CC; // 0x0CC 
         public IntPtr ACD; // 0x0A8 
-        //public Container<ActorCommonData>** ACD; // 0x0D4 
-        //public IntPtr pACD; // 0x0A8 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]
         public byte[] unknown_D8; // 0x0D8 
         public UInt32 Mode; // 0x118 
@@ -38,7 +31,6 @@ namespace D3x.Structures
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
         public byte[] unknown_130; // 0x130 
         public IntPtr pActorsContainer; // 0x0A8 
-        //tContainer<CActor>* Actors; // 0x134 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
         public byte[] unknown_138; // 0x138 
         public UInt32 ppCloth; // 0x13C 
@@ -46,22 +38,18 @@ namespace D3x.Structures
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 36)]
         public byte[] unknown_144; // 0x144 
         public IntPtr Frames; // 0x0A8 
-        //ObManFrames* Frames; // 0x168 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 12)]
         public byte[] unknown_16C; // 0x16C 
         public UInt32 Scenes; // 0x178 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
         public byte[] unknown_17C; // 0x17C 
         public IntPtr MovHistory; // 0x0A8 
-        //CObMovHPtr* MovHistory; // 0x184 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 40)]
         public byte[] unknown_188; // 0x188 
         public IntPtr Worlds; // 0x0A8 
-        //tContainer<CWorld>* Worlds; // 0x1B0 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
         public byte[] unknown_1B4; // 0x1B4 
         public IntPtr Local; // 0x0A8 
-        //CObLocal* Local; // 0x1B8 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 656)]
         public byte[] unknown_1BC; // 0x1BC 
 
@@ -72,9 +60,22 @@ namespace D3x.Structures
 
         public Structures.ContainerActor GetActorContainer()
         {
-            //return (Structures.ContainerActor)Game.MemoryNew.Read((IntPtr)(84342464), typeof(Structures.ContainerActor));
             return (Structures.ContainerActor)Game.MemoryNew.Read(pActorsContainer, typeof(Structures.ContainerActor));
-            //return (Structures.Container<Structures.Actor>)Game.MemoryNew.Read(pActorsContainer, typeof(Structures.Container<Structures.Actor>));
+        }
+
+        public List<Structures.Actor> GetActors()
+        {
+            return this.GetActorContainer().GetList();
+        }
+
+        public Structures.ContainerActorCommonData GetActorCommonDataContainer()
+        {
+            return (Structures.ContainerActorCommonData)Game.MemoryNew.Read(pActorsContainer, typeof(Structures.ContainerActorCommonData));
+        }
+
+        public List<Structures.ActorCommonData> GetActorCommonData()
+        {
+            return this.GetActorCommonDataContainer().GetList();
         }
 
     }

@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace D3x.Structures
 {
+    //todo untested
     [StructLayout(LayoutKind.Sequential, Pack = 4, CharSet = CharSet.Ansi, Size = 0x428)]
     unsafe public struct ActorMovement
     {

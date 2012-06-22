@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace D3x.Structures
 {
-    [StructLayout(LayoutKind.Sequential )]
+    [StructLayout(LayoutKind.Sequential)]
     unsafe public struct Actor
     {
         public UInt32 id_actor; // 0x000 
@@ -45,8 +45,13 @@ namespace D3x.Structures
         public fixed byte unknown_388[24]; // 0x388 
         public Vec3 Vel; // 0x3A0 
         public Vec3 Pos6; // 0x3AC 
-        public fixed byte unknown_3B8[96]; // 0x3B8 
+        //public fixed byte unknown_3B8[96]; // 0x3B8 
+
+        public fixed byte unknown_3B8[80]; // 0x3B8
+        public float life; // 0x408
+        public fixed byte unknown_40C[12]; // 0x40C
         public uint Frame; // 0x418 
+
         public uint Diff; // 0x41C 
         public fixed byte unknown_420[8]; // 0x420 
     }
