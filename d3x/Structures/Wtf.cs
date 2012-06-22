@@ -10,6 +10,6 @@ namespace D3x.Structures
     {
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 24)]
         public byte[] unknown_0; // 0x000 
-        public ulong _600DF00D; // 0x018 
+        public UInt32 _600DF00D; // 0x018 
     }
 }

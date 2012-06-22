@@ -24,6 +24,11 @@ namespace D3x
                 {
                     if (actor.id_acd == 0x77BC0000) Me = actor;
                 }
+
+                foreach (Structures.AttributeGroup attrib in Game.ObjectManager.Storage.GetFastAttribGroupsContainer().GetFastAttribGroupsContainer().GetList())
+                {
+                    //Debug.Print(attrib.id_attrib);
+                }
             }
             catch (Exception ex)
             {

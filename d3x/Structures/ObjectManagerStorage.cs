@@ -17,7 +17,7 @@ namespace D3x.Structures
         public UInt32 pData; // 0x0A8 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 28)]
         public byte[] unknown_AC; // 0x0AC 
-        public UInt32 pAttribGroups; // 0x0A8 
+        public UInt32 pAttribGroupsOuterContainer; // 0x0C8 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
         public byte[] unknown_CC; // 0x0CC 
         public UInt32 ACD; // 0x0A8 
@@ -58,9 +58,10 @@ namespace D3x.Structures
             return (Structures.ObjectDataContainer)Game.Memory.ReadObject(pData, typeof(Structures.ObjectDataContainer));
         }
 
-        public Structures.ContainerActor GetActorContainer()
+        // Actors
+        public Structures.tContainerActor GetActorContainer()
         {
-            return (Structures.ContainerActor)Game.Memory.ReadObject(pActorsContainer, typeof(Structures.ContainerActor));
+            return (Structures.tContainerActor)Game.Memory.ReadObject(pActorsContainer, typeof(Structures.tContainerActor));
         }
 
         public List<Structures.Actor> GetActors()
@@ -68,14 +69,21 @@ namespace D3x.Structures
             return this.GetActorContainer().GetList();
         }
 
-        public Structures.ContainerActorCommonData GetActorCommonDataContainer()
+        // ActorCommonData
+        public Structures.tContainerActorCommonData GetActorCommonDataContainer()
         {
-            return (Structures.ContainerActorCommonData)Game.Memory.ReadObject(pActorsContainer, typeof(Structures.ContainerActorCommonData));
+            return (Structures.tContainerActorCommonData)Game.Memory.ReadObject(pActorsContainer, typeof(Structures.tContainerActorCommonData));
         }
 
         public List<Structures.ActorCommonData> GetActorCommonData()
         {
             return this.GetActorCommonDataContainer().GetList();
+        }
+
+        // FastAttribGroupsOuterContainer
+        public Structures.AttributeGroupsOuterContainer GetFastAttribGroupsContainer()
+        {
+            return (Structures.AttributeGroupsOuterContainer)Game.Memory.ReadObject(pAttribGroupsOuterContainer, typeof(Structures.AttributeGroupsOuterContainer));
         }
 
     }

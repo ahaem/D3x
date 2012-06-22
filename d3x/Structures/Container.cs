@@ -26,7 +26,7 @@ namespace D3x.Structures
     }*/
 
     [StructLayout(LayoutKind.Sequential)]
-    public struct ContainerActor
+    public struct tContainerActor
     {
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
         public string name;
@@ -52,7 +52,7 @@ namespace D3x.Structures
             for (int i = 0; i < this.Last; i++)
             {
                 Actor item = (Structures.Actor)Game.Memory.ReadObject(pCurrentItem, typeof(Structures.Actor));
-                Debug.Print(item.name + ": " + Enum.GetName(typeof(SNO.Actor), item.id_sno));
+                //Debug.Print(item.name + ": " + Enum.GetName(typeof(SNO.Actor), item.id_sno));
                 items.Add(item);
                 pCurrentItem = (UInt32)pCurrentItem + SizeOf;
             }
@@ -61,7 +61,7 @@ namespace D3x.Structures
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    public struct ContainerActorCommonData
+    public struct tContainerActorCommonData
     {
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
         public string name;
@@ -87,6 +87,41 @@ namespace D3x.Structures
             for (int i = 0; i < this.Last; i++)
             {
                 ActorCommonData item = (Structures.ActorCommonData)Game.Memory.ReadObject(pCurrentItem, typeof(Structures.ActorCommonData));
+                //Debug.Print(item.name + ": " + Enum.GetName(typeof(SNO.Actor), item.id_sno));
+                items.Add(item);
+                pCurrentItem = (UInt32)((UInt32)pCurrentItem + SizeOf);
+            }
+            return items;
+        }
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct tContainerFastAttribGroups
+    {
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
+        public string name;
+        public UInt32 Limit;
+        public UInt32 SizeOf;
+        public Int32 Last;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 60)]
+        public byte[] unknown_10C;
+        public UInt32 pList;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]
+        public byte[] unknown_14C;
+        public UInt32 Bits;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]
+        public byte[] unknown_190;
+
+        public List<Structures.AttributeGroup> GetList()
+        {
+            List<Structures.AttributeGroup> items = new List<Structures.AttributeGroup>();
+            UInt32 offsetCurrentListItem = Game.Memory.ReadUInt((uint)pList); //todo Need to move this to MemoryNew
+            UInt32 pFirstItem = (UInt32)offsetCurrentListItem;
+
+            UInt32 pCurrentItem = pFirstItem;
+            for (int i = 0; i < this.Last; i++)
+            {
+                AttributeGroup item = (Structures.AttributeGroup)Game.Memory.ReadObject(pCurrentItem, typeof(Structures.AttributeGroup));
                 //Debug.Print(item.name + ": " + Enum.GetName(typeof(SNO.Actor), item.id_sno));
                 items.Add(item);
                 pCurrentItem = (UInt32)((UInt32)pCurrentItem + SizeOf);

@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enumerators\Actor.cs" />
+    <Compile Include="Enumerators\ActorAttribute.cs" />
     <Compile Include="Enumerators\Power.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Offsets.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="Structures\Actor.cs" />
     <Compile Include="Structures\ActorCommonData.cs" />
     <Compile Include="Structures\ActorMovement.cs" />
+    <Compile Include="Structures\AttributeGroup.cs" />
     <Compile Include="Structures\AttributeGroupsContainer.cs" />
     <Compile Include="Structures\Container.cs" />
     <Compile Include="Structures\NativeSceneSNO.cs" />
