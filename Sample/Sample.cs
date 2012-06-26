@@ -24,9 +24,10 @@ namespace Sample
             {
                 Game.Attach(SProcess.GetProcessesFromWindowTitle("Diablo III")[0]);
                 Debug.Print("DEBUG: count: " + Game.ObjectManager.Storage.GetActorContainer().GetList().Count);
+                int i = 0;
                 foreach (D3x.Structures.Actor actor in Game.ObjectManager.Storage.GetActorContainer().GetList())
                 {
-                    lstActors.Items.Add(actor.name);
+                    lstActors.Items.Add((i++).ToString()+": "+System.Text.Encoding.ASCII.GetString(actor.name));
                 }
             }
             catch (Exception ex)

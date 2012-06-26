@@ -88,8 +88,9 @@ namespace D3x.Structures
             {
                 ActorCommonData item = (Structures.ActorCommonData)Game.Memory.ReadObject(pCurrentItem, typeof(Structures.ActorCommonData));
                 //Debug.Print(item.name + ": " + Enum.GetName(typeof(SNO.Actor), item.id_sno));
+                item.addressBase = pCurrentItem;
                 items.Add(item);
-                pCurrentItem = (UInt32)((UInt32)pCurrentItem + SizeOf);
+                pCurrentItem = (UInt32)(pCurrentItem + SizeOf);
             }
             return items;
         }
@@ -123,6 +124,7 @@ namespace D3x.Structures
             {
                 AttributeGroup item = (Structures.AttributeGroup)Game.Memory.ReadObject(pCurrentItem, typeof(Structures.AttributeGroup));
                 //Debug.Print(item.name + ": " + Enum.GetName(typeof(SNO.Actor), item.id_sno));
+                item.addressBase = pCurrentItem;
                 items.Add(item);
                 pCurrentItem = (UInt32)((UInt32)pCurrentItem + SizeOf);
             }

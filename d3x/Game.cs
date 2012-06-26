@@ -20,15 +20,14 @@ namespace D3x
                 ObjectManager = (Structures.ObjectManager)Memory.ReadObject((UInt32)addrObjectManager, typeof(Structures.ObjectManager));
 
                 Structures.Actor Me;
-                foreach (Structures.Actor actor in Game.ObjectManager.Storage.GetActors())
-                {
-                    if (actor.id_acd == 0x77BC0000) Me = actor;
-                }
+                Structures.ActorCommonData MeACD;
+                List<Structures.Actor> Actors = Game.ObjectManager.Storage.GetActors();
+                List<Structures.ActorCommonData> ACDs = Game.ObjectManager.Storage.GetActorCommonData();
 
-                foreach (Structures.AttributeGroup attrib in Game.ObjectManager.Storage.GetFastAttribGroupsContainer().GetFastAttribGroupsContainer().GetList())
-                {
-                    //Debug.Print(attrib.id_attrib);
-                }
+                Me = Actors.Find(i => i.id_acd == 0x77BC0000);
+                MeACD = ACDs.Find(i => i.id_acd == Me.id_actor);
+
+                //float hp = Me.GetFAG().GetFloat((uint)Enumerators.ActorAttribute.Hitpoints_Cur);
             }
             catch (Exception ex)
             {

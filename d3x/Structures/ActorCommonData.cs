@@ -2,19 +2,20 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Runtime.InteropServices;
+using System.Diagnostics;
 
 namespace D3x.Structures
 {
-    [StructLayout(LayoutKind.Sequential/*, Pack = 4, CharSet = CharSet.Ansi, Size = 0x2D0*/)] //Offsets.ACDSize)
+    [StructLayout(LayoutKind.Sequential/*, Pack = 4, CharSet = CharSet.Ansi*/, Size = 0x2D0)] //Offsets.ACDSize)
     public struct ActorCommonData
     {
-        public UInt32 id_acd;                // 0x000
-        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 128)]
-        public string name; // 0x004
+        public UInt32 id_acd; // 0x000
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 128)]
+        public byte[] name; // 0x004
         public UInt32 unk_0; // 0x084 
         public UInt32 id_unk1; // 0x088 
         public UInt32 id_unk2; // 0x08C 
-        public UInt32 id_snow; // 0x090 
+        public UInt32 id_sno; // 0x090 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 32)]
         public byte[] unknown_94; // 0x094 
         public UInt32 id_acd_gBall; // 0x0B4  
@@ -32,7 +33,7 @@ namespace D3x.Structures
         public UInt32 id_owner; // 0x110 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 12)]
         public byte[] unknown_114; // 0x114 
-        public UInt32 id_attrib; // 0x120 
+        public UInt32 id_fag; //id_attrib; // 0x120 
         public UInt32 id_unk3; // 0x124 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 244)]
         public byte[] unknown_128; // 0x128 
@@ -45,5 +46,8 @@ namespace D3x.Structures
         public float RadiusScaled; // 0x238 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 148)]
         public byte[] unknown_23C; // 0x23C 
+
+        public UInt32 addressBase;
+
     }
 }
