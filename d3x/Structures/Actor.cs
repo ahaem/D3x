@@ -57,6 +57,7 @@ namespace D3x.Structures
         public fixed byte unknown_420[8]; // 0x420 
 
         public UInt32 addressBase;
+        /*
         /// <summary>
         /// Get an actor attribute (health, armor etc.)
         /// </summary>
@@ -108,6 +109,7 @@ namespace D3x.Structures
             }
             return 0;
         }
+        */
 
         public Structures.FAG GetFAG()
         {

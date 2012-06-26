@@ -27,7 +27,21 @@ namespace Sample
                 int i = 0;
                 foreach (D3x.Structures.Actor actor in Game.ObjectManager.Storage.GetActorContainer().GetList())
                 {
-                    lstActors.Items.Add((i++).ToString()+": "+System.Text.Encoding.ASCII.GetString(actor.name));
+                    String tmp = (i++).ToString() + ": ";
+                    tmp += System.Text.Encoding.ASCII.GetString(actor.name).TrimEnd(new char[] { (char)0 });
+
+                    try
+                    {
+                        float hp = actor.GetFAG().GetFloat((uint)D3x.Enumerators.ActorAttribute.Hitpoints_Cur);
+                        if (hp > 0)
+                        {
+                            tmp += ", HP: " + hp.ToString();
+                        }
+                    }
+                    catch (Exception)
+                    {
+                    }
+                    lstActors.Items.Add(tmp);
                 }
             }
             catch (Exception ex)

@@ -37,7 +37,7 @@
             this.lstActors.FormattingEnabled = true;
             this.lstActors.Location = new System.Drawing.Point(12, 25);
             this.lstActors.Name = "lstActors";
-            this.lstActors.Size = new System.Drawing.Size(150, 225);
+            this.lstActors.Size = new System.Drawing.Size(539, 225);
             this.lstActors.TabIndex = 0;
             // 
             // lblActors
@@ -53,7 +53,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(178, 262);
+            this.ClientSize = new System.Drawing.Size(563, 262);
             this.Controls.Add(this.lblActors);
             this.Controls.Add(this.lstActors);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
