@@ -30,6 +30,8 @@
         {
             this.lstActors = new System.Windows.Forms.ListBox();
             this.lblActors = new System.Windows.Forms.Label();
+            this.lstACDs = new System.Windows.Forms.ListBox();
+            this.lblACDs = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lstActors
@@ -37,7 +39,7 @@
             this.lstActors.FormattingEnabled = true;
             this.lstActors.Location = new System.Drawing.Point(12, 25);
             this.lstActors.Name = "lstActors";
-            this.lstActors.Size = new System.Drawing.Size(539, 225);
+            this.lstActors.Size = new System.Drawing.Size(539, 82);
             this.lstActors.TabIndex = 0;
             // 
             // lblActors
@@ -49,11 +51,30 @@
             this.lblActors.TabIndex = 1;
             this.lblActors.Text = "Actors";
             // 
+            // lstACDs
+            // 
+            this.lstACDs.FormattingEnabled = true;
+            this.lstACDs.Location = new System.Drawing.Point(12, 126);
+            this.lstACDs.Name = "lstACDs";
+            this.lstACDs.Size = new System.Drawing.Size(539, 82);
+            this.lstACDs.TabIndex = 2;
+            // 
+            // lblACDs
+            // 
+            this.lblACDs.AutoSize = true;
+            this.lblACDs.Location = new System.Drawing.Point(12, 110);
+            this.lblACDs.Name = "lblACDs";
+            this.lblACDs.Size = new System.Drawing.Size(34, 13);
+            this.lblACDs.TabIndex = 3;
+            this.lblACDs.Text = "ACDs";
+            // 
             // Sample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(563, 262);
+            this.ClientSize = new System.Drawing.Size(563, 223);
+            this.Controls.Add(this.lblACDs);
+            this.Controls.Add(this.lstACDs);
             this.Controls.Add(this.lblActors);
             this.Controls.Add(this.lstActors);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -69,6 +90,8 @@
 
         private System.Windows.Forms.ListBox lstActors;
         private System.Windows.Forms.Label lblActors;
+        private System.Windows.Forms.ListBox lstACDs;
+        private System.Windows.Forms.Label lblACDs;
     }
 }
 

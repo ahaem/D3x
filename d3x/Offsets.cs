@@ -6,6 +6,6 @@ namespace D3x
 {
     public static class Offsets
     {
-        public static uint objectManager = 0x15A0BEC; // 1.0.3.10057
+        public static uint objectManager = 0x15A1BEC; // 1.0.3a
     }
 }

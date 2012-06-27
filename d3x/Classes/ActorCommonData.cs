@@ -4,7 +4,7 @@ using System.Text;
 
 namespace D3x.Classes
 {
-    class ActorCommonData
+    class cActorCommonData
     {
 
     }

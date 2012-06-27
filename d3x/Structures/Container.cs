@@ -86,7 +86,7 @@ namespace D3x.Structures
             UInt32 pCurrentItem = pFirstItem;
             for (int i = 0; i < this.Last; i++)
             {
-                ActorCommonData item = (Structures.ActorCommonData)Game.Memory.ReadObject(pCurrentItem, typeof(Structures.ActorCommonData));
+                Structures.ActorCommonData item = (Structures.ActorCommonData)Game.Memory.ReadObject(pCurrentItem, typeof(Structures.ActorCommonData));
                 //Debug.Print(item.name + ": " + Enum.GetName(typeof(SNO.Actor), item.id_sno));
                 item.addressBase = pCurrentItem;
                 items.Add(item);

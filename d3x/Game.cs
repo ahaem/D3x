@@ -20,12 +20,7 @@ namespace D3x
                 ObjectManager = (Structures.ObjectManager)Memory.ReadObject((UInt32)addrObjectManager, typeof(Structures.ObjectManager));
 
                 Structures.Actor Me;
-                Structures.ActorCommonData MeACD;
-                List<Structures.Actor> Actors = Game.ObjectManager.Storage.GetActors();
-                List<Structures.ActorCommonData> ACDs = Game.ObjectManager.Storage.GetActorCommonData();
-
-                Me = Actors.Find(i => i.id_acd == 0x77BC0000);
-                MeACD = ACDs.Find(i => i.id_acd == Me.id_actor);
+                Me = Game.ObjectManager.Storage.GetActors().Find(i => i.id_acd == 0x77BC0000);
 
                 //float hp = Me.GetFAG().GetFloat((uint)Enumerators.ActorAttribute.Hitpoints_Cur);
             }

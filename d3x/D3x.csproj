@@ -47,6 +47,8 @@
     <Compile Include="Enumerators\Actor.cs" />
     <Compile Include="Enumerators\ActorAttribute.cs" />
     <Compile Include="Enumerators\ActorClass.cs" />
+    <Compile Include="Enumerators\ItemLocation.cs" />
+    <Compile Include="Enumerators\MonsterRace.cs" />
     <Compile Include="Enumerators\Power.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Offsets.cs" />

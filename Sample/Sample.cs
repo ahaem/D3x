@@ -30,7 +30,7 @@ namespace Sample
                     String tmp = (i++).ToString() + ": ";
                     tmp += System.Text.Encoding.ASCII.GetString(actor.name).TrimEnd(new char[] { (char)0 });
 
-                    try
+                    /*try
                     {
                         float hp = actor.GetFAG().GetFloat((uint)D3x.Enumerators.ActorAttribute.Hitpoints_Cur);
                         if (hp > 0)
@@ -38,10 +38,28 @@ namespace Sample
                             tmp += ", HP: " + hp.ToString();
                         }
                     }
-                    catch (Exception)
-                    {
-                    }
+                    catch (Exception) { }*/
+
                     lstActors.Items.Add(tmp);
+                }
+
+                i = 0;
+                foreach (D3x.Structures.ActorCommonData acd in Game.ObjectManager.Storage.GetActorCommonDataContainer().GetList())
+                {
+                    String tmp = (i++).ToString() + ": ";
+                    tmp += acd.GetName();
+                    tmp += " ------ "+Enum.GetName(typeof(D3x.Enumerators.ItemLocation), acd.itemLoc);
+                    /*try
+                    {
+                        float hp = actor.GetFAG().GetFloat((uint)D3x.Enumerators.ActorAttribute.Hitpoints_Cur);
+                        if (hp > 0)
+                        {
+                            tmp += ", HP: " + hp.ToString();
+                        }
+                    }
+                    catch (Exception) { }*/
+
+                    lstACDs.Items.Add(tmp);
                 }
             }
             catch (Exception ex)

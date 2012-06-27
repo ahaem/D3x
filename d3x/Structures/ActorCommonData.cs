@@ -31,8 +31,9 @@ namespace D3x.Structures
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
         public byte[] unknown_10C; // 0x10C 
         public UInt32 id_owner; // 0x110 
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 12)]
-        public byte[] unknown_114; // 0x114 
+        public Enumerators.ItemLocation itemLoc; // 0x114 
+        public uint itemX; // 0x118
+        public uint itemY; // 0x11C
         public UInt32 id_fag; //id_attrib; // 0x120 
         public UInt32 id_unk3; // 0x124 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 244)]
@@ -49,5 +50,9 @@ namespace D3x.Structures
 
         public UInt32 addressBase;
 
+        public string GetName()
+        {
+            return System.Text.Encoding.ASCII.GetString(name).TrimEnd(new char[] { (char)0 });
+        }
     }
 }

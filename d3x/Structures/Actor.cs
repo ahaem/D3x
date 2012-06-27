@@ -57,6 +57,12 @@ namespace D3x.Structures
         public fixed byte unknown_420[8]; // 0x420 
 
         public UInt32 addressBase;
+
+        public string GetName()
+        {
+            return System.Text.Encoding.ASCII.GetString(name).TrimEnd(new char[] { (char)0 });
+        }
+
         /*
         /// <summary>
         /// Get an actor attribute (health, armor etc.)
